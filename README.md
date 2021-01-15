@@ -1,4 +1,4 @@
 # Password-Generator
 
-(passwordgenerator.png)
+![screenshot of generator](passwordgenerator.png)
 
