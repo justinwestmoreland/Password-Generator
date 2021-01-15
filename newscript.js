@@ -22,13 +22,11 @@ function writePassword() {
     return writePassword();
   }
   if (passwordLength >= 8 && passwordLength <= 128) {
-    alert("Now you'll chooose which characters you'll want to use.")
   }
   else {
     alert("Please select a value between 8 and 128");
     return writePassword();
   }
-
   // prompt to choose lowercase Y or N
   var lowerCaseChoice = window.prompt("Use Lower Case Letters? Y or N");
   lowerCaseChoice = lowerCaseChoice.toUpperCase();
@@ -90,7 +88,7 @@ function writePassword() {
   // if no character types are selected, end function 
   if (lowerCaseChoice === "N" && upperCaseChoice === "N" && numbersChoice === "N" && specialsChoice === "N") {
     alert("Please select at least one character set");
-    writePassword();
+    return writePassword();
   }
 
   var generatePassword = function () {
