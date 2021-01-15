@@ -13,27 +13,21 @@ function writePassword() {
   if (passwordLength === null) {
     return;
   }
-  else if (!passwordLength) {
+  if (!passwordLength) {
     alert("Please select a value between 8 and 128");
-    return;
+    return writePassword();
   }
-  else if (passwordLength >= 8 && passwordLength <= 128) {
-    //do something here
+  if (passwordLength >= 8 && passwordLength <= 128) {
+  alert("Now you'll chooose which characters you'll want to use.")    
   }
-  else if (passwordLength < 8 || passwordLength > 128) {
-    if (passwordLength < 8) {
+  if (passwordLength < 8 || passwordLength > 128) {
       alert("Please select a value between 8 and 128");
-      return;
-    }
-    else if (passwordLength > 128) {
-      alert("Please select a value between 8 and 128");
-      return;
-    }
+      return writePassword();
   }
   // prompt to choose lowercase Y or N
   var lowerCaseChoice = window.confirm("Use Lower Case Letters? OK = Yes or Cancel = No");
-  if (lowerCaseChoice == true) {
-    oneArray.push(lowerCase);
+  if (lowerCaseChoice === true) {
+    oneArray = oneArray.concat(lowerCase);
     console.log ("I'm going to use Lowercase Letters");
     console.log(oneArray);
   }
@@ -43,7 +37,7 @@ function writePassword() {
   var upperCaseChoice = window.confirm("Use Upper Case Letters? OK = Yes or Cancel = No");
   if (upperCaseChoice === true) {
     console.log("I'm going to use uppercase letters");
-    oneArray.push(upperCase);
+    oneArray = oneArray.concat(upperCase);
     console.log(oneArray);
     //pull random number of uppercase letters
   }
@@ -52,7 +46,7 @@ function writePassword() {
   var numbersChoice = window.confirm("Use Numbers? OK = Yes or Cancel = No");
   if (numbersChoice === true) {
     console.log("I'm going to use Numbers");
-    oneArray.push(numbers);
+    oneArray = oneArray.concat(numbers);
     console.log(oneArray);
     //pull random numners of numerical characters
   }
@@ -61,7 +55,7 @@ function writePassword() {
   var specialsChoice = window.confirm("Use Special Characters? OK = Yes or Cancel = No");
   if (specialsChoice === true) {
     console.log("I'm going to use special characters");
-    oneArray.push(specials);
+    oneArray = oneArray.concat(specials);
     console.log(oneArray);
     //pull random number of special characters
   }
@@ -72,17 +66,26 @@ function writePassword() {
     alert("Please select at least one character set");
     writePassword();
   }
+ console.log("oneArray", oneArray);
 
-//this is where I am REALLY stuck. I have all the logic down, but how do I get my for loop to generate the correct number of characters from my oneArray to generate and print the password.
-//why is this not working. Philip please help me. 
+// for (var i = 0; i < 50; i++){
+//   var practice = Math.floor(Math.random() * 50);
+//   console.log("practice", practice);
+
+// }
+
 
   var generatePassword = function(){
-    var index = Math.floor(Math.random() * oneArray.length);
-
-    for (i = 0; i < passwordLength; i++)
-    console.log(oneArray[index]);
+    var results = []
+    for (var i = 0; i < passwordLength; i++){
+    var randomNumber = Math.floor(Math.random() * oneArray.length);
+    // console.log(oneArray[randomNumber]);
+    results.push(oneArray[randomNumber]);
     }
+  
+  return results.join("");
 
+  }
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
