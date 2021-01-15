@@ -7,8 +7,7 @@ var specials = [' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.',
 
 function writePassword() {
   //this loop promopts people to enter a password length of their choosing. If password is fewer than 8 or greater 
-  //than 128 the function is stopped and restarted. 
-
+  //than 128 the function is stopped and restarted. If the user selects cancel at any time, the function is cancelled. 
   var oneArray = [];
   var passwordLength = window.prompt("Select Length of Password between 8 and 128 characters");
   if (passwordLength === null) {
@@ -27,48 +26,44 @@ function writePassword() {
   }
 
   // prompt to choose lowercase Y or N
-  var lowerCaseChoice = window.confirm("Use Lower Case Letters? OK = Yes or Cancel = No");
-  if (lowerCaseChoice === true) {
+  var lowerCaseChoice = window.prompt("Use Lower Case Letters: Y or N");
+  lowerCaseChoice = lowerCaseChoice.toUpperCase();
+  if (lowerCaseChoice === "Y") {
     oneArray = oneArray.concat(lowerCase);
     console.log("I'm going to use Lowercase Letters");
     console.log(oneArray);
   }
-  else { }
-
   // uppercase Y or N
-  var upperCaseChoice = window.confirm("Use Upper Case Letters? OK = Yes or Cancel = No");
-  if (upperCaseChoice === true) {
+  var upperCaseChoice = window.prompt("Use Upper Case Letters: Y or N");
+  upperCaseChoice = upperCaseChoice.toUpperCase();
+  if (upperCaseChoice === "Y") {
     console.log("I'm going to use uppercase letters");
     oneArray = oneArray.concat(upperCase);
     console.log(oneArray);
     //pull random number of uppercase letters
   }
-
   // numeric Y or N
-  var numbersChoice = window.confirm("Use Numbers? OK = Yes or Cancel = No");
-  if (numbersChoice === true) {
+  var numbersChoice = window.prompt("Use Numbers: Y or N");
+  numbersChoice = numbersChoice.toUpperCase();
+  if (numbersChoice === "Y") {
     console.log("I'm going to use Numbers");
     oneArray = oneArray.concat(numbers);
     console.log(oneArray);
     //pull random numners of numerical characters
   }
-
   // special characters Y or N
-  var specialsChoice = window.confirm("Use Special Characters? OK = Yes or Cancel = No");
-  if (specialsChoice === true) {
+  var specialsChoice = window.prompt("Use Special Characters? OK = Yes or Cancel = No");
+  specialsChoice = specialsChoice.toUpperCase();
+  if (specialsChoice === "Y") {
     console.log("I'm going to use special characters");
     oneArray = oneArray.concat(specials);
     console.log(oneArray);
-    //pull random number of special characters
   }
-
-
   // if no character types are selected, end function 
   if (lowerCaseChoice === false && upperCaseChoice === false && numbersChoice === false && specialsChoice === false) {
     alert("Please select at least one character set");
     writePassword();
   }
-  console.log("oneArray", oneArray);
 
   var generatePassword = function () {
     var results = []
@@ -77,20 +72,11 @@ function writePassword() {
       // console.log(oneArray[randomNumber]);
       results.push(oneArray[randomNumber]);
     }
-
     return results.join("");
   }
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
-
-  for (var i = 0; i < 50; i++){
-    var practice = Math.floor(Math.random() * 50);
-    console.log("practice", practice);
-
-  }
 }
 
 // Add event listener to generate button

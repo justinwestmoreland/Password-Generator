@@ -62,9 +62,9 @@ function writePassword() {
   }
 
   //greate a function called generatePassword
-  var generatePassword = function () {
-    for (var i=0, i < passwordLength.length; i++)
-   }
+  // var generatePassword = function () {
+  //   for (var i=0, i < passwordLength.length; i++)
+  //  }
  
 
 
@@ -75,6 +75,13 @@ function writePassword() {
 
   
 }
+
+for (var i = 0; i < 50; i++){
+  var practice = Math.floor(Math.random() * 50);
+  console.log("practice", practice);
+
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
