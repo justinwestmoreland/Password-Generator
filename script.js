@@ -10,7 +10,7 @@ var specials = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/',
 function writePassword() {
   // This loop promopts people to enter a password length of their choosing. If password is fewer than 8 or greater 
   // than 128 characters the function is stopped and restarted. If the user selects cancel at any time, the function is cancelled. 
-  
+
   // oneArray begins blank and will be the array all user selections are concatenated. 
   var oneArray = [];
   var passwordLength = window.prompt("Select Length of Password between 8 and 128 characters");
@@ -31,7 +31,7 @@ function writePassword() {
     alert("Please select a value between 8 and 128");
     return writePassword();
   }
-  
+
   // Users are prompted to select whether or not to include lowercase, uppercase, numbers, or special characters for lines 31 through
   // 89. When users do not select a Y or N, they are sent back to the beginning to begin again. If a user selects Y for any of the characters
   // all possible choices are put into oneArray to be stored to use when generating a random password. 
@@ -46,12 +46,12 @@ function writePassword() {
     alert("Please select Y or N");
     return writePassword();
   }
- 
+
   var upperCaseChoice = window.prompt("Use Upper Case Letters? Y or N");
   upperCaseChoice = upperCaseChoice.toUpperCase();
   if (upperCaseChoice === "Y") {
     oneArray = oneArray.concat(upperCase);
-  
+
   }
   else if (upperCaseChoice === "N") {
   }
@@ -59,12 +59,12 @@ function writePassword() {
     alert("Please select Y or N");
     return writePassword();
   }
-  
+
   var numbersChoice = window.prompt("Use Numbers? Y or N");
   numbersChoice = numbersChoice.toUpperCase();
   if (numbersChoice === "Y") {
     oneArray = oneArray.concat(numbers);
-  
+
   }
   else if (numbersChoice === "N") {
   }
@@ -72,7 +72,7 @@ function writePassword() {
     alert("Please select Y or N");
     return writePassword();
   }
-  
+
   var specialsChoice = window.prompt("Use Special Characters? Y or N");
   specialsChoice = specialsChoice.toUpperCase();
   if (specialsChoice === "Y") {
@@ -86,7 +86,10 @@ function writePassword() {
   }
   // If the user does not select one of the character choices, they recieve an alert that they have to select at least one
   // and are brought back to the beginning to start again. 
-  if (lowerCaseChoice === "N" && upperCaseChoice === "N" && numbersChoice === "N" && specialsChoice === "N") {
+  if (lowerCaseChoice === "N" &&
+    upperCaseChoice === "N" &&
+    numbersChoice === "N" &&
+    specialsChoice === "N") {
     alert("Please select at least one character set");
     return writePassword();
   }
