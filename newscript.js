@@ -7,7 +7,7 @@ var specials = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/',
 
 function writePassword() {
   //this loop promopts people to enter a password length of their choosing. If password is fewer than 8 or greater 
-  //than 128 the function is stopped and restarted. If the user selects cancel at any time, the function is cancelled. 
+  //than 128 characters the function is stopped and restarted. If the user selects cancel at any time, the function is cancelled. 
   var oneArray = [];
   var passwordLength = window.prompt("Select Length of Password between 8 and 128 characters");
   if (passwordLength === null) {
